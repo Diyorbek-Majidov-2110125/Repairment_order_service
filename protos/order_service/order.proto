@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package order_service;
+option go_package = "genproto/order_service";
+
+import "google/protobuf/struct.proto";
+
+message Order {
+    string id = 1;
+    string user_id = 2;
+    bool is_completed = 3;
+    string created_at = 4;
+    string updated_at = 5;
+}
+
+message CreateOrderRequest {
+    string user_id = 1;
+}
+
+message OrderPrimaryKey {
+    string id = 1;
+}
+
+message UpdateOrderRequest {
+    string id = 1;
+    bool is_completed = 2;
+}
+
+message UpdatePatchOrder {
+    string id = 1;
+    google.protobuf.Struct fields = 2;
+}
+
+message GetListOrderRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListOrderResponse {
+    int64 total = 1;
+    repeated Order orders = 2;
+}

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package user_service;
+
+option go_package = "genproto/user_service";
+
+import "google/protobuf/struct.proto";
+
+message User {
+    string id = 1;
+    string full_name = 2;
+    string phone_number = 3;
+    string created_at = 4;
+    string updated_at = 5;
+}
+
+message UserPrimaryKey {
+    string id = 1;
+}
+
+message CreateUserRequest {
+    string full_name = 1;
+    string phone_number = 2;
+}
+
+message UpdateUserRequest {
+    string id = 1;
+    string full_name = 2;
+    string phone_number = 3;
+}
+
+message UpdatePatchUser {
+    string id = 1;
+    google.protobuf.Struct fields = 2;
+}
+
+message GetListUserRequest {
+    int64 offset = 1;
+    int64 limit = 2;
+    string search = 3;
+}
+
+message GetListUserResponse {
+    int64 total = 1;
+    repeated User users = 2;
+}

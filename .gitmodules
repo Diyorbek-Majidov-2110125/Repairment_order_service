@@ -1,0 +1,3 @@
+[submodule "repair_service_protos"]
+	path = repair_service_protos
+	url = git@github.com:Diyorbek-Majidov-2110125/repair_service_protos.git
